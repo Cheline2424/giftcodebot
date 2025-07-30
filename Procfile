@@ -1,1 +1,1 @@
-web: gunicorn giftcode:app
+web: gunicorn giftcode.bot:app
