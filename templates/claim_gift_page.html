@@ -234,7 +234,7 @@
                 <a href="https://bharatclub.net/#/login" target="_blank">LOGIN</a>
                 <a href="https://bharatclub.bet/#/register?invitationCode=521765158649" target="_blank">REGISTER</a>
                 <a href="https://bht-prediction-app-live-new.onrender.com" target="_blank">PREDICTION TOOL</a>
-                </div>
+            </div>
             <h1 class="page-title">Claim Your Bharat Club Gift Code!</h1>
         </header>
 
@@ -244,18 +244,18 @@
                 <p>Follow the simple steps below to start the process of claiming your gift code. This is the first step to get exclusive bonuses from Bharat Club!</p>
 
                 <div class="redeem-code-box">
-                    <h3>Your Redeem Code (for teacher contact):</h3>
+                    <h3>Your Redeem Code (for bot contact):</h3> {# EDITED #}
                     <button class="reveal-button" onclick="revealCode()"><i class="fas fa-magic"></i> Reveal Code</button>
                     <div class="code-display" id="permanentCode">24053424543</div>
                     <button class="copy-button" id="copyButton" onclick="copyCode()"><i class="fas fa-copy"></i> Copy Code</button>
-                    <p style="font-size: 0.9em; color: #ccc; margin-top: 15px;">This code is your unique identification for contacting your teacher.</p>
+                    <p style="font-size: 0.9em; color: #ccc; margin-top: 15px;">This code is your unique identification for contacting the bot.</p> {# EDITED #}
                 </div>
 
                 <div class="contact-teacher">
-                    <p>After you have copied the code above, please <strong>contact your Bharat Club teacher</strong> via Telegram to get the actual gift code that you can claim on the platform.</p>
-                    <p>Provide this identification code to your teacher to verify your membership and eligibility.</p>
-                    <a href="https://t.me/BHTCLUBWITHCHELINEE" target="_blank" class="telegram-button"><i class="fab fa-telegram-plane"></i> Contact Teacher (Telegram)</a>
-                    <p style="font-size: 0.8em; color: #bbb; margin-top: 20px;">You must be registered and have made your first deposit to be eligible for the actual gift code from your teacher.</p>
+                    <p>After you have copied the code above, please <strong>contact bot @BHTCLUBOFFICIALBOT</strong> via Telegram to get the actual gift code that you can claim on the platform.</p> {# EDITED #}
+                    <p>Provide this identification code to the bot to verify your membership and eligibility.</p> {# EDITED #}
+                    <a href="https://t.me/BHTCLUBOFFICIALBOT" target="_blank" class="telegram-button"><i class="fab fa-telegram-plane"></i> Contact Bot @BHTCLUBOFFICIALBOT</a> {# EDITED LINK & TEXT #}
+                    <p style="font-size: 0.8em; color: #bbb; margin-top: 20px;">You must be registered and have made your first deposit to be eligible for the actual gift code from the bot.</p> {# EDITED #}
                 </div>
             </div>
         </div>
@@ -285,7 +285,7 @@
             const codeElement = document.getElementById('permanentCode');
             const codeToCopy = codeElement.innerText;
             navigator.clipboard.writeText(codeToCopy).then(() => {
-                alert('Code "' + codeToCopy + '" copied to clipboard! Now contact your teacher.');
+                alert('Code "' + codeToCopy + '" copied to clipboard! Now contact bot @BHTCLUBOFFICIALBOT.'); // EDITED
             }).catch(err => {
                 console.error('Failed to copy code: ', err);
                 alert('Failed to copy code. Please copy manually: ' + codeToCopy);
