@@ -1,2 +1,2 @@
-Flask==2.3.3 # Atau versi Flask yang Anda gunakan
-gunicorn==21.2.0 # Versi gunicorn yang direkomendasikan untuk deployment
+Flask==2.3.2
+gunicorn==20.1.0
