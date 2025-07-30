@@ -1,0 +1,54 @@
+import os
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+
+# Inisialisasi aplikasi Flask
+app = Flask(__name__)
+
+# Mengatur SECRET_KEY dari variabel lingkungan (direkomendasikan untuk produksi)
+# Jika tidak ditemukan di variabel lingkungan, gunakan nilai default yang kuat.
+# PENTING: Untuk deployment di Render, Anda harus mengatur SECRET_KEY ini
+# di bagian Environment Variables di dashboard Render.
+app.secret_key = os.environ.get('SECRET_KEY', 'SUPER_STRONG_RANDOM_SECRET_KEY_GANTI_INI_DI_PRODUKSI_DENGAN_ENV_VAR')
+
+# Rute untuk halaman utama (form klaim hadiah)
+@app.route('/')
+def show_claim_gift_page():
+    # Render template HTML untuk halaman klaim hadiah
+    return render_template('claim_gift_page.html')
+
+# Rute untuk memproses data POST dari formulir klaim
+@app.route('/claim_gift', methods=['POST'])
+def process_claimed_gift():
+    # Mendapatkan nilai 'gift_code' dari data formulir POST
+    gift_code_attempt = request.form.get('gift_code')
+
+    if gift_code_attempt:
+        # Menampilkan pesan di konsol server (untuk debugging)
+        print(f"Percobaan klaim kode hadiah diterima: {gift_code_attempt}")
+
+        # --- LOGIKA VALIDASI KODE HADIAH ANDA AKAN BERADA DI SINI ---
+        # Contoh sederhana:
+        if gift_code_attempt == "KODE_RAHASIA_123":
+            flash('Selamat! Kode hadiah Anda berhasil diklaim.', 'success')
+            # Anda bisa menambahkan logika untuk mengarahkan ke Telegram di sini
+            # Contoh: return redirect("https://t.me/your_telegram_channel")
+        else:
+            flash('Maaf, kode hadiah tidak valid. Silakan coba lagi.', 'error')
+        # --- AKHIR LOGIKA VALIDASI ---
+
+    else:
+        # Jika tidak ada kode yang dimasukkan
+        flash('Silakan masukkan kode hadiah.', 'warning')
+
+    # Mengarahkan kembali pengguna ke halaman klaim hadiah setelah proses
+    # Pesan flash akan ditampilkan di halaman ini.
+    return redirect(url_for('show_claim_gift_page'))
+
+# Bagian ini hanya akan berjalan saat Anda menjalankan skrip secara langsung (misalnya, python giftcode.py)
+# Ini TIDAK akan berjalan saat Anda menyebarkan aplikasi dengan Gunicorn di Render.
+if __name__ == '__main__':
+    # Menjalankan aplikasi dalam mode debug.
+    # PENTING: JANGAN gunakan debug=True di lingkungan produksi karena alasan keamanan.
+    # Ini hanya untuk pengembangan lokal.
+    app.run(debug=True)
+
